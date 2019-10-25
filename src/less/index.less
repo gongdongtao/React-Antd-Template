@@ -1,0 +1,297 @@
+@import './variables.less';
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    height: 100%;
+}
+
+.app-wrapper {
+    min-height: 100vh;
+    &.fixedHeader {
+        .global-header.ant-layout-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            transition: width 0.2s;
+        }
+        .app-right-wrapper {
+            padding-top: 60px;
+        }
+        &.sideNav:not(.mobile) {
+            .global-header.ant-layout-header {
+                width: calc(100% - 200px);
+                transition: width 0.2s;
+            }
+            &.collapsed {
+                .global-header.ant-layout-header {
+                    width: calc(100% - 80px);
+                }
+            }
+        }
+    }
+    &.fixedSider.sideNav:not(.mobile) {
+        .ant-menu {
+            height: calc(100% - 60px);
+            overflow: hidden auto;
+        }
+        .ant-layout-sider {
+            position: fixed;
+            height: 100vh;
+        }
+        .app-right-wrapper {
+            padding-left: 200px;
+        }
+        &.collapsed {
+            .app-right-wrapper {
+                padding-left: 80px;
+            }
+        }
+    }
+    .ant-layout-sider {
+        z-index: 10;
+    }
+}
+
+.app-right-wrapper {
+    display: block;
+}
+
+.sider-logo {
+    height: 60px;
+    line-height: 60px;
+    background: #002140;
+    padding-left: 24px;
+    overflow: hidden;
+    transition: background 0.2s;
+    .logo-text {
+        color: #fff;
+        font-size: 18px;
+        margin: 0;
+        font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        font-weight: 600;
+    }
+    &.sideNav {
+        &.light {
+            background: @primary-color;
+        }
+    }
+    &.topNav.light {
+        background: @primary-color;
+    }
+}
+.header-logo {
+    padding-left: 16px;
+    .logo-text {
+        font-size: 18px;
+        margin: 0;
+        font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        font-weight: 600;
+    }
+}
+
+.global-header.ant-layout-header {
+    color: #000;
+    box-shadow: 0 0 4px rgba(0,0,0,.2);
+    display: flex;
+    justify-content: space-between;
+    line-height: 60px;
+    padding: 0;
+    height: 60px;
+    background: #fff;
+    transition: background 0.2s;
+    z-index: 9;
+    .ant-menu {
+        height: 59px;
+        line-height: 59px;
+        &.ant-menu-horizontal {
+            border-bottom: 0;
+            & > .ant-menu-item,
+            & > .ant-menu-submenu {
+                top: 0;
+            }
+        }
+    }
+    &.topNav.dark {
+        background: #001529;
+        color: #fff;
+        .ant-menu {
+            height: 60px;
+            line-height: 60px;
+        }
+        .header-logo .logo-text {
+            color: #fff;
+        }
+    }
+    &.sideNav.light {
+        background: @primary-color;
+        color: #fff;
+        .header-logo .logo-text {
+            color: #fff;
+        }
+    }
+    .header-left {
+        flex: 1;
+        display: flex;
+        .trigger.anticon {
+            font-size: 22px;
+            line-height: 64px;
+        }
+        .menu-content {
+            flex: 1;
+            overflow: hidden;
+        }
+    }
+    .header-right {
+        display: flex;
+        .anticon {
+            font-size: 16px;
+        }
+        .ant-avatar {
+            margin-top: -2px;
+        }
+        .user-file {
+            margin-left: 8px;
+        }
+    }
+    .menu-item {
+        line-height: 60px;
+        padding: 0 16px;
+        transition: background 0.2s;
+        cursor: pointer;
+        &:hover {
+            background: hsla(0,0%,100%,.3);
+        }
+    }
+}
+.lang-check {
+    .anticon {
+      color: @primary-color;
+      margin-right: 8px;
+    }
+    &:not(.checked) {
+      padding-left: 22px;
+    }
+}
+/*清除浮动代码*/
+.clearfloat:after{
+    display:block;
+    clear:both;
+    content:"";
+    visibility:hidden;
+    height:0;
+}
+.clearfloat{
+    zoom:1;
+}
+.colorBlock {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.sketch-item {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border: 4px solid #d0c0c0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.settingDrawer {
+    .ant-drawer-body {
+      padding: 0;
+      height: 100%;
+    }
+    .drawer-bar {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .reset-text {
+        font-size: 12px;
+        cursor: pointer;
+        color: @primary-color;
+      }
+    }
+    .other-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+    }
+}
+
+.sider-menu-drawer {
+    .ant-drawer-body {
+        padding: 0;
+        height: 100vh;
+        .ant-layout-sider {
+            height: 100%;
+        }
+    }
+}
+
+.top-tabs-wrapper {
+    height: 52px;
+    border-bottom: 1px solid #ccc;
+    // border-left: 1px solid #ccc;
+    background: #fff;
+    padding: 0 20px;
+    .ant-tabs-bar {
+        border-bottom: 0
+    }
+    .tab-close-icon {
+        position: absolute;
+        top: 16px;
+        right: 0px;
+        color: #aaa;
+        visibility: hidden;
+        transition: all 0.2s;
+        &:hover {
+            color: #333;
+        }
+    }
+    .ant-tabs-nav .ant-tabs-tab {
+        padding: 12px 24px;
+        margin-right: 10px;
+        &:hover {
+            .tab-close-icon {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+// .scrollbar {
+    //修改谷歌浏览器滚动条样式
+    ::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+        // border-radius:2px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #aaa;
+        // border-radius:2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #747474;
+    }
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+// }
